@@ -26,6 +26,7 @@
   --color-card: var(--card-bg);
   --color-border: var(--card-border);
   --color-accent: var(--accent);
+  --color-muted-foreground: var(--text-muted);
   --radius-bento: var(--radius-bento);
 }
 
