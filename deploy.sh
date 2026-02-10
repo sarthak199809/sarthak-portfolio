@@ -18,4 +18,4 @@ echo "🔄 Rebuilding Docker container..."
 docker compose down
 docker compose up -d --build
 
-echo "✅ Deployment Complete! Portfolio is live at http://localhost:3000 (mapped to subdomain via Nginx)"
+echo "✅ Deployment Complete! Portfolio is live at http://localhost:3000 (mapped to subdomain via Caddy)"
