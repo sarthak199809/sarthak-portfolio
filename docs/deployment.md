@@ -45,26 +45,41 @@ chmod +x deploy.sh
 
 ---
 
-## Step 3: Configure Reverse Proxy (Caddy)
+## Step 3: Configure Reverse Proxy (Existing Caddy)
 
-Since you already have a Caddy setup for n8n, you just need to add a block to your `Caddyfile` to route `portfolio.sarthakpm.online` to the portfolio container.
+Since you already have a Caddy container running for n8n, you should use it to handle `portfolio.sarthakpm.online`. You have two ways to do this:
 
-### Update Caddyfile
-Locate your current `Caddyfile` (usually where your n8n docker-compose is or in `/etc/caddy/Caddyfile`) and add:
+### Option A: Via Docker Network (Recommended)
+This is the cleanest way. Both containers will "talk" internally.
 
-```caddy
-portfolio.sarthakpm.online {
-    reverse_proxy localhost:3000
-}
-```
+1.  **Find your n8n network name**:
+    Run `docker network ls` on your server. It's likely something like `n8n_default` or `n8n_network`.
+2.  **Update `docker-compose.yml`**:
+    Ensure the `networks` block in your portfolio's `docker-compose.yml` matches that name.
+3.  **Update Caddyfile**:
+    Update your n8n's Caddyfile to point to the portfolio container by its name:
+    ```caddy
+    portfolio.sarthakpm.online {
+        reverse_proxy portfolio:3000
+    }
+    ```
+
+### Option B: Via Host IP (Simplest)
+If you don't want to mess with networks, you can point Caddy to the host's IP.
+
+1.  **Update Caddyfile**:
+    ```caddy
+    portfolio.sarthakpm.online {
+        reverse_proxy 172.17.0.1:3000
+    }
+    ```
+    *(Note: `172.17.0.1` is usually the default Docker bridge gateway IP which refers to your host).*
 
 ### Apply Changes
-If you are running Caddy in Docker, restart or reload it:
+After updating the `Caddyfile`, reload Caddy:
 ```bash
 docker exec -it <caddy-container-name> caddy reload --config /etc/caddy/Caddyfile
 ```
-
-*Note: Caddy will automatically handle SSL (HTTPS) for your subdomain.*
 
 ---
 

@@ -11,3 +11,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    networks:
+      - n8n_network # Update this to match your actual n8n network name
+
+networks:
+  n8n_network:
+    external: true
