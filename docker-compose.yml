@@ -12,8 +12,8 @@ services:
     environment:
       - NODE_ENV=production
     networks:
-      - n8n_network # Update this to match your actual n8n network name
+      - n8n-docker_default
 
 networks:
-  n8n_network:
+  n8n-docker_default:
     external: true

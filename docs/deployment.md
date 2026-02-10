@@ -52,12 +52,12 @@ Since you already have a Caddy container running for n8n, you should use it to h
 ### Option A: Via Docker Network (Recommended)
 This is the cleanest way. Both containers will "talk" internally.
 
-1.  **Find your n8n network name**:
-    Run `docker network ls` on your server. It's likely something like `n8n_default` or `n8n_network`.
+1.  **Confirmed network name**:
+    Your n8n network is `n8n-docker_default`.
 2.  **Update `docker-compose.yml`**:
-    Ensure the `networks` block in your portfolio's `docker-compose.yml` matches that name.
+    The `docker-compose.yml` is already configured to use this network.
 3.  **Update Caddyfile**:
-    Update your n8n's Caddyfile to point to the portfolio container by its name:
+    Update your n8n's Caddyfile to point to the portfolio container:
     ```caddy
     portfolio.sarthakpm.online {
         reverse_proxy portfolio:3000
