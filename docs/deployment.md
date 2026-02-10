@@ -45,48 +45,26 @@ chmod +x deploy.sh
 
 ---
 
-## Step 3: Configure Reverse Proxy (Nginx)
+## Step 3: Configure Reverse Proxy (Caddy)
 
-Since you already have n8n running, you likely have Nginx or a similar proxy. You need to route `portfolio.sarthakpm.online` to the portfolio container running on port `3000`.
+Since you already have a Caddy setup for n8n, you just need to add a block to your `Caddyfile` to route `portfolio.sarthakpm.online` to the portfolio container.
 
-### Create Nginx Config
-Create a new config file:
-```bash
-nano /etc/nginx/sites-available/portfolio
-```
+### Update Caddyfile
+Locate your current `Caddyfile` (usually where your n8n docker-compose is or in `/etc/caddy/Caddyfile`) and add:
 
-Paste the following configuration:
-
-```nginx
-server {
-    server_name portfolio.sarthakpm.online;
-
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-    # Optional: SSL Configuration (Certbot will handle this later)
-    listen 80;
+```caddy
+portfolio.sarthakpm.online {
+    reverse_proxy localhost:3000
 }
 ```
 
-### Enable Site and Restart Nginx
+### Apply Changes
+If you are running Caddy in Docker, restart or reload it:
 ```bash
-ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
-nginx -t  # Test configuration
-systemctl restart nginx
+docker exec -it <caddy-container-name> caddy reload --config /etc/caddy/Caddyfile
 ```
 
-### SSL (HTTPS) Setup
-Use Certbot to secure the subdomain:
-```bash
-certbot --nginx -d portfolio.sarthakpm.online
-```
+*Note: Caddy will automatically handle SSL (HTTPS) for your subdomain.*
 
 ---
 
