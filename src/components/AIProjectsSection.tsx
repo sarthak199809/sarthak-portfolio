@@ -65,9 +65,13 @@ export default function AIProjectsSection() {
                                 className="w-full max-w-4xl bg-card border border-border shadow-2xl rounded-[32px] overflow-hidden pointer-events-auto"
                             >
                                 <div className="relative aspect-video bg-background border-b border-border overflow-hidden">
-                                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 text-xs uppercase tracking-widest font-bold">
-                                        n8n Workflow Screenshot
-                                    </div>
+                                    {aiProjects.find(p => p.id === selectedId)?.n8nScreenshotUrl && (
+                                        <img
+                                            src={aiProjects.find(p => p.id === selectedId)?.n8nScreenshotUrl}
+                                            alt={aiProjects.find(p => p.id === selectedId)?.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    )}
                                     <button
                                         onClick={() => setSelectedId(null)}
                                         className="absolute top-6 right-6 p-2 bg-card rounded-full hover:bg-background transition-colors shadow-sm"

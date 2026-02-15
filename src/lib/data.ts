@@ -109,13 +109,13 @@ export const careerData: PortfolioProject[] = [
 
 export const aiProjects: AIProject[] = [
     {
-        id: "n8n-support-automation",
-        title: "n8n Support Bot",
-        summary: "Automated support resolution using n8n and AI.",
-        description: "Built a complex workflow on n8n that triggers on new support tickets, analyzes sentiment via OpenAI, and maps to internal docs for immediate resolution.",
-        n8nScreenshotUrl: "/projects/n8n-workflow.webp",
-        testLink: "https://n8n.sarthak.dev",
-        toolsUsed: ["n8n", "OpenAI", "Webhook", "Redis"]
+        id: "gmatrc-automation",
+        title: "GMAT RC Automation",
+        summary: "Automated GMAT Reading Comprehension analysis.",
+        description: "Built a specialized GMAT RC helper that leverages AI to break down complex passages, identify logic patterns, and suggest focus areas for improved comprehension.",
+        n8nScreenshotUrl: "https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/gmatRC.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL2dtYXRSQy5wbmciLCJpYXQiOjE3NzExNTI3NzgsImV4cCI6MTgwMjY4ODc3OH0.xeOm70QrOLwnMuUX0TxV7YlUcArKFEt7Tlu5fxynBh8",
+        testLink: "https://portfolio.sarthakpm.online/gmatrcMVP",
+        toolsUsed: ["n8n", "OpenAI", "Supabase", "Next.js"]
     }
 ];
 
