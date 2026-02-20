@@ -6,10 +6,12 @@ import ImpactSection from "@/components/ImpactSection";
 import WorkSection from "@/components/WorkSection";
 import SkillsSection from "@/components/SkillsSection";
 import AIProjectsSection from "@/components/AIProjectsSection";
+import CMSLoginTrigger from "@/components/CMSLoginTrigger";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+      <CMSLoginTrigger />
       <FloatingDock />
       <div className="relative z-10">
         <HomeSection />

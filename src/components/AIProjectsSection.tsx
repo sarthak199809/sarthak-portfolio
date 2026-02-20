@@ -1,12 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { aiProjects } from "@/lib/data";
 import { Cpu, ExternalLink, X, Workflow } from "lucide-react";
 
-export default function AIProjectsSection() {
+interface Project {
+    id: string;
+    title: string;
+    summary: string;
+    description: string;
+    n8nScreenshotUrl: string;
+    testLink: string;
+    toolsUsed: string[];
+}
+
+export default function AIProjectsSection({ initialProjects }: { initialProjects?: Project[] }) {
+    const [projects, setProjects] = useState<Project[]>(initialProjects || []);
     const [selectedId, setSelectedId] = useState<string | null>(null);
+    const [loading, setLoading] = useState(!initialProjects);
+
+    React.useEffect(() => {
+        if (!initialProjects) {
+            fetch("/api/projects")
+                .then(res => res.json())
+                .then(data => {
+                    setProjects(data);
+                    setLoading(false);
+                });
+        }
+    }, [initialProjects]);
+
+    const selectedProject = projects.find(p => p.id === selectedId);
 
     return (
         <section id="ai-projects" className="py-32 px-6 md:px-24 bg-background transition-colors duration-300">
@@ -19,13 +43,15 @@ export default function AIProjectsSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {aiProjects.map((project) => (
+                {projects.map((project: Project) => (
                     <motion.div
                         key={project.id}
                         layoutId={project.id}
                         onClick={() => setSelectedId(project.id)}
-                        className="bento-card cursor-pointer group hover:shadow-xl transition-all bg-card border-border"
+                        className="bento-card cursor-pointer group hover:shadow-xl transition-all bg-card border-border overflow-hidden relative"
                     >
+                        {/* Shimmer Effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none animate-shimmer" />
                         <div className="flex justify-between items-start mb-12">
                             <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
                                 <Cpu size={24} className="text-accent group-hover:text-white transition-colors" />
@@ -44,6 +70,17 @@ export default function AIProjectsSection() {
                                     {tool}
                                 </span>
                             ))}
+                        </div>
+
+                        {/* Expand CTA */}
+                        <div className="mt-8 flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                            Learn More
+                            <motion.div
+                                animate={{ x: [0, 5, 0] }}
+                                transition={{ repeat: Infinity, duration: 1.5 }}
+                            >
+                                <ExternalLink size={14} />
+                            </motion.div>
                         </div>
                     </motion.div>
                 ))}
@@ -65,10 +102,10 @@ export default function AIProjectsSection() {
                                 className="w-full max-w-4xl bg-card border border-border shadow-2xl rounded-[32px] overflow-hidden pointer-events-auto"
                             >
                                 <div className="relative aspect-video bg-background border-b border-border overflow-hidden">
-                                    {aiProjects.find(p => p.id === selectedId)?.n8nScreenshotUrl && (
+                                    {selectedProject?.n8nScreenshotUrl && (
                                         <img
-                                            src={aiProjects.find(p => p.id === selectedId)?.n8nScreenshotUrl}
-                                            alt={aiProjects.find(p => p.id === selectedId)?.title}
+                                            src={selectedProject.n8nScreenshotUrl}
+                                            alt={selectedProject.title}
                                             className="w-full h-full object-cover"
                                         />
                                     )}
@@ -84,10 +121,10 @@ export default function AIProjectsSection() {
                                     <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
                                         <div>
                                             <h3 className="text-3xl md:text-4xl font-black mb-2 text-foreground">
-                                                {aiProjects.find(p => p.id === selectedId)?.title}
+                                                {selectedProject?.title}
                                             </h3>
                                             <div className="flex flex-wrap gap-2">
-                                                {aiProjects.find(p => p.id === selectedId)?.toolsUsed.map((tool) => (
+                                                {selectedProject?.toolsUsed.map((tool: string) => (
                                                     <span key={tool} className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground bg-background px-2 py-1 rounded">
                                                         {tool}
                                                     </span>
@@ -96,7 +133,7 @@ export default function AIProjectsSection() {
                                         </div>
 
                                         <a
-                                            href={aiProjects.find(p => p.id === selectedId)?.testLink}
+                                            href={selectedProject?.testLink}
                                             target="_blank"
                                             className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20"
                                         >
@@ -106,7 +143,7 @@ export default function AIProjectsSection() {
                                     </div>
 
                                     <p className="text-xl text-muted-foreground leading-relaxed font-medium">
-                                        {aiProjects.find(p => p.id === selectedId)?.description}
+                                        {selectedProject?.description}
                                     </p>
                                 </div>
                             </motion.div>

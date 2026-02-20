@@ -115,7 +115,7 @@ export const aiProjects: AIProject[] = [
         description: "Built a specialized GMAT RC helper that leverages AI to break down complex passages, identify logic patterns, and suggest focus areas for improved comprehension.",
         n8nScreenshotUrl: "https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/gmatRC.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL2dtYXRSQy5wbmciLCJpYXQiOjE3NzExNTI3NzgsImV4cCI6MTgwMjY4ODc3OH0.xeOm70QrOLwnMuUX0TxV7YlUcArKFEt7Tlu5fxynBh8",
         testLink: "https://portfolio.sarthakpm.online/gmatrcMVP",
-        toolsUsed: ["n8n", "OpenAI", "Supabase", "Next.js"]
+        toolsUsed: ["n8n", "OpenAI", "Next.js"]
     }
 ];
 

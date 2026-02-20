@@ -57,6 +57,8 @@ body {
     border-radius: var(--radius-bento);
     padding: 2.5rem;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
   .bento-card:hover {
@@ -66,5 +68,25 @@ body {
 
   [data-theme="dark"] .bento-card:hover {
     background: #252525;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 59, 0, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
   }
 }

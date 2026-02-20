@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   portfolio:
     container_name: portfolio
@@ -11,9 +9,18 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    networks:
-      - n8n-docker_default
+      - CMS_SECRET=change-this-to-a-secure-secret-on-server
+      - DEPLOYMENT_URL=https://your-domain.com # Set this to enable Secure cookies
+      - DATABASE_URI=file:/app/db/sqlite.db
+      - DB_DIR=/app/db
+    volumes:
+      - portfolio_db:/app/db
+    # networks:
+    #   - n8n-docker_default
 
-networks:
-  n8n-docker_default:
-    external: true
+volumes:
+  portfolio_db:
+
+    # networks:
+    #   n8n-docker_default:
+    #     external: true
