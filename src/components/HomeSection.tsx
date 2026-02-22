@@ -56,13 +56,13 @@ export default function HomeSection() {
 
                     <div className="bento-card md:col-span-2 flex flex-col justify-between bg-foreground text-background p-8 transition-all">
                         <div>
-                            <p className="opacity-40 text-xs uppercase tracking-widest mb-4 font-bold">Actions</p>
+                            <p className="text-background/50 text-xs uppercase tracking-widest mb-4 font-bold">Actions</p>
                             <div className="flex flex-wrap gap-4">
                                 <a href="tel:+918266903656" className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20">
                                     <Phone size={24} />
                                     Call Now
                                 </a>
-                                <a href="/Sarthak_Garg_Resume.pdf" target="_blank" className="bg-background text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-card transition-all border border-border">
+                                <a href="https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Sarthak_garg_resume_updated-feb26.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NhcnRoYWtfZ2FyZ19yZXN1bWVfdXBkYXRlZC1mZWIyNi5wZGYiLCJpYXQiOjE3NzE3NTcyODYsImV4cCI6MTgwMzI5MzI4Nn0.lOFK6pRZfSsmMUzmm0W-JyYS_yIkGDjnwUnHrFIJETE" target="_blank" className="bg-background text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-card transition-all border border-border">
                                     <Download size={24} />
                                     Download Resume
                                 </a>

@@ -73,7 +73,7 @@ export default function AIProjectsSection({ initialProjects }: { initialProjects
                         </div>
 
                         {/* Expand CTA */}
-                        <div className="mt-8 flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                        <div className="mt-8 flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest opacity-100 transition-all">
                             Learn More
                             <motion.div
                                 animate={{ x: [0, 5, 0] }}

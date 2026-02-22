@@ -14,7 +14,7 @@ export default function CMSLoginTrigger() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsModalOpen(true)}
-                className="fixed bottom-8 left-8 z-[90] w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-colors shadow-lg group backdrop-blur-md"
+                className="fixed md:bottom-8 md:left-8 top-6 left-6 z-[90] w-12 h-12 bg-card border border-border rounded-full flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-colors shadow-lg group backdrop-blur-md"
                 title="CMS Login"
             >
                 <Lock size={18} className="group-hover:rotate-12 transition-transform" />

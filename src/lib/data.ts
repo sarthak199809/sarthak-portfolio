@@ -43,7 +43,7 @@ export const careerData: PortfolioProject[] = [
             { label: "Response Time", value: "<5m" }
         ],
         techStack: ["API Security", "Vulnerability Scanning", "UI/UX Redesign"],
-        imageUrl: "/projects/bugdazz.webp"
+        imageUrl: "https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/SL7.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NMNy5wbmciLCJpYXQiOjE3NzE3NTcyNDYsImV4cCI6MTgwMzI5MzI0Nn0.7-Qa1_fYVPDdD5cebhY0eIxmJVQ1_0gpdBo5Ub6eXPk"
     },
     {
         id: "bijnis",
@@ -63,7 +63,7 @@ export const careerData: PortfolioProject[] = [
             { label: "Engagement Lift", value: "18%" }
         ],
         techStack: ["Segment", "Clevertap", "SQL", "BigQuery"],
-        imageUrl: "/projects/bijnis.webp"
+        imageUrl: "https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Bijnis.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL0Jpam5pcy5wbmciLCJpYXQiOjE3NzE3NTcyMTcsImV4cCI6MTgwMzI5MzIxN30.3IsKC43xU_K52JMYg8UpangCVecNRiLQduHFrodZ8kU"
     },
     {
         id: "sticker-project",
@@ -103,7 +103,7 @@ export const careerData: PortfolioProject[] = [
             { label: "Feature Adoption", value: "40%" }
         ],
         techStack: ["React", "Chrome Extension", "Mixpanel"],
-        imageUrl: "/projects/eazybe.webp"
+        imageUrl: "https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Eazybe.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL0VhenliZS5wbmciLCJpYXQiOjE3NzE3NTcyMzMsImV4cCI6MTgwMzI5MzIzM30.0VLW0unnBeJYEDoxF2aCchotfDsf5PsEwHmolQZrxgY"
     }
 ];
 
