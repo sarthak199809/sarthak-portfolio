@@ -56,7 +56,7 @@ export default function HomeSection() {
 
                     <div className="bento-card md:col-span-2 flex flex-col justify-between bg-foreground text-background p-8 transition-all">
                         <div>
-                            <p className="text-background/50 text-xs uppercase tracking-widest mb-4 font-bold">Actions</p>
+                            <p className="text-background font-black text-[10px] uppercase tracking-[0.2em] mb-4 opacity-70">Actions</p>
                             <div className="flex flex-wrap gap-4">
                                 <a href="tel:+918266903656" className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20">
                                     <Phone size={24} />
