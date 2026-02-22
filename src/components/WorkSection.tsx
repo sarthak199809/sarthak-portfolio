@@ -32,9 +32,17 @@ export default function WorkSection() {
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                             <div className="relative aspect-[16/10] overflow-hidden rounded-[32px] bg-card border border-border group-hover:shadow-xl transition-shadow">
-                                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 text-xs uppercase tracking-widest font-bold">
-                                    {job.company} Project Image
-                                </div>
+                                {job.imageUrl ? (
+                                    <img
+                                        src={job.imageUrl}
+                                        alt={job.title}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 text-xs uppercase tracking-widest font-bold">
+                                        {job.company} Project Image
+                                    </div>
+                                )}
                             </div>
 
                             <div className="flex flex-col justify-center">
