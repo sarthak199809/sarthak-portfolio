@@ -50,13 +50,24 @@ export default function AIProjectsSection({ initialProjects }: { initialProjects
                         onClick={() => setSelectedId(project.id)}
                         className="bento-card cursor-pointer group hover:shadow-xl transition-all bg-card border-border overflow-hidden relative"
                     >
-                        {/* Shimmer Effect */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none animate-shimmer" />
-                        <div className="flex justify-between items-start mb-12">
-                            <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-colors">
-                                <Cpu size={24} className="text-accent group-hover:text-white transition-colors" />
+                        {/* Project Image Preview */}
+                        <div className="relative h-48 -mx-1 -mt-1 mb-12 overflow-hidden rounded-b-2xl border-b border-border">
+                            {project.n8nScreenshotUrl ? (
+                                <img
+                                    src={project.n8nScreenshotUrl}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            ) : (
+                                <div className="w-full h-full bg-accent/5 flex items-center justify-center">
+                                    <Cpu size={32} className="text-accent/20" />
+                                </div>
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent pt-32 px-6">
+                                <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white shadow-lg">
+                                    <Cpu size={20} />
+                                </div>
                             </div>
-                            <Workflow size={20} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
 
                         <h3 className="text-2xl font-black mb-2 text-foreground">{project.title}</h3>
