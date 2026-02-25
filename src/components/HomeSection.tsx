@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Linkedin, Mail, Phone, Download, MapPin } from "lucide-react";
+import * as gtag from "@/lib/gtag";
 
 export default function HomeSection() {
     return (
@@ -42,11 +43,20 @@ export default function HomeSection() {
                         <div>
                             <p className="text-muted-foreground text-xs uppercase tracking-widest mb-4 font-bold">Connect</p>
                             <div className="flex flex-col gap-4">
-                                <a href="https://linkedin.com/in/sarthak-garg-pm" target="_blank" className="flex items-center gap-3 text-foreground font-bold hover:text-accent transition-colors">
+                                <a
+                                    href="https://linkedin.com/in/sarthak-garg-pm"
+                                    target="_blank"
+                                    className="flex items-center gap-3 text-foreground font-bold hover:text-accent transition-colors"
+                                    onClick={() => gtag.event({ action: 'linkedin_click', category: 'Contact', label: 'LinkedIn' })}
+                                >
                                     <Linkedin size={20} />
                                     <span>LinkedIn</span>
                                 </a>
-                                <a href="mailto:Sarthak199809@gmail.com" className="flex items-center gap-3 text-foreground font-bold hover:text-accent transition-colors">
+                                <a
+                                    href="mailto:Sarthak199809@gmail.com"
+                                    className="flex items-center gap-3 text-foreground font-bold hover:text-accent transition-colors"
+                                    onClick={() => gtag.event({ action: 'email_click', category: 'Contact', label: 'Email' })}
+                                >
                                     <Mail size={20} />
                                     <span>Email</span>
                                 </a>
@@ -56,13 +66,22 @@ export default function HomeSection() {
 
                     <div className="bento-card md:col-span-2 flex flex-col justify-between bg-foreground text-background p-8 transition-all">
                         <div>
-                            <p className="text-[#666666] font-black text-[10px] uppercase tracking-[0.2em] mb-4">Actions</p>
+                            <p className="text-background font-black text-[10px] uppercase tracking-[0.2em] mb-4 opacity-70">Actions</p>
                             <div className="flex flex-wrap gap-4">
-                                <a href="tel:+918266903656" className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20">
+                                <a
+                                    href="tel:+918266903656"
+                                    className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20"
+                                    onClick={() => gtag.event({ action: 'call_click', category: 'Contact', label: 'Phone' })}
+                                >
                                     <Phone size={24} />
                                     Call Now
                                 </a>
-                                <a href="https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Sarthak_garg_resume_updated-feb26.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NhcnRoYWtfZ2FyZ19yZXN1bWVfdXBkYXRlZC1mZWIyNi5wZGYiLCJpYXQiOjE3NzE3NTcyODYsImV4cCI6MTgwMzI5MzI4Nn0.lOFK6pRZfSsmMUzmm0W-JyYS_yIkGDjnwUnHrFIJETE" target="_blank" className="bg-background text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-card transition-all border border-border">
+                                <a
+                                    href="https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Sarthak_garg_resume_updated-feb26.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NhcnRoYWtfZ2FyZ19yZXN1bWVfdXBkYXRlZC1mZWIyNi5wZGYiLCJpYXQiOjE3NzE3NTcyODYsImV4cCI6MTgwMzI5MzI4Nn0.lOFK6pRZfSsmMUzmm0W-JyYS_yIkGDjnwUnHrFIJETE"
+                                    target="_blank"
+                                    className="bg-background text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-card transition-all border border-border"
+                                    onClick={() => gtag.event({ action: 'resume_download', category: 'LeadGen', label: 'Resume PDF' })}
+                                >
                                     <Download size={24} />
                                     Download Resume
                                 </a>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, Zap, Code2, Sparkles, Sun, Moon, Phone, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/contexts/ThemeContext";
+import * as gtag from "@/lib/gtag";
 
 const navItems = [
     { name: "Contact", icon: Phone, href: "#home" },
@@ -61,7 +62,14 @@ export default function FloatingDock() {
             {/* Mobile Theme Toggle (Top Right) */}
             <div className="fixed top-6 right-6 z-[90] md:hidden">
                 <button
-                    onClick={toggleTheme}
+                    onClick={() => {
+                        toggleTheme();
+                        gtag.event({
+                            action: 'theme_toggle',
+                            category: 'Engagement',
+                            label: theme === 'dark' ? 'Light' : 'Dark'
+                        });
+                    }}
                     className="flex items-center justify-center w-12 h-12 bg-card border border-border rounded-full shadow-lg group backdrop-blur-md"
                     aria-label="Toggle theme"
                 >
@@ -103,6 +111,11 @@ export default function FloatingDock() {
                                 href={item.href}
                                 onHoverStart={() => setHovered(item.name)}
                                 onHoverEnd={() => setHovered(null)}
+                                onClick={() => gtag.event({
+                                    action: 'nav_click',
+                                    category: 'Navigation',
+                                    label: item.name
+                                })}
                                 className={cn(
                                     "relative flex items-center h-12 px-3 rounded-full transition-all duration-300",
                                     activeSection === item.name
@@ -140,7 +153,14 @@ export default function FloatingDock() {
                     {/* Desktop Theme Toggle (Hidden on mobile) */}
                     <div className="hidden md:block">
                         <button
-                            onClick={toggleTheme}
+                            onClick={() => {
+                                toggleTheme();
+                                gtag.event({
+                                    action: 'theme_toggle',
+                                    category: 'Engagement',
+                                    label: theme === 'dark' ? 'Light' : 'Dark'
+                                });
+                            }}
                             className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all relative overflow-hidden group"
                             aria-label="Toggle theme"
                         >
@@ -167,6 +187,11 @@ export default function FloatingDock() {
 
                     <a
                         href="#ai-projects"
+                        onClick={() => gtag.event({
+                            action: 'nav_click',
+                            category: 'Navigation',
+                            label: 'View AI Projects'
+                        })}
                         className="bg-black text-white px-4 md:px-5 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-bold hover:bg-gray-900 transition-all shadow-lg flex items-center gap-2 shrink-0"
                     >
                         <Sparkles size={16} className="text-[#FF3B00] md:size-[18px]" />

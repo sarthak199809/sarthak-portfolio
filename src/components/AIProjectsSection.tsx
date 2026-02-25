@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, ExternalLink, X, Workflow } from "lucide-react";
+import * as gtag from "@/lib/gtag";
 
 interface Project {
     id: string;
@@ -47,7 +48,14 @@ export default function AIProjectsSection({ initialProjects }: { initialProjects
                     <motion.div
                         key={project.id}
                         layoutId={project.id}
-                        onClick={() => setSelectedId(project.id)}
+                        onClick={() => {
+                            setSelectedId(project.id);
+                            gtag.event({
+                                action: 'view_ai_project',
+                                category: 'Engagement',
+                                label: project.title
+                            });
+                        }}
                         className="bento-card cursor-pointer group hover:shadow-xl transition-all bg-card border-border overflow-hidden relative"
                     >
                         {/* Project Image Preview */}
@@ -147,6 +155,11 @@ export default function AIProjectsSection({ initialProjects }: { initialProjects
                                             href={selectedProject?.testLink}
                                             target="_blank"
                                             className="bg-accent text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-accent/20"
+                                            onClick={() => gtag.event({
+                                                action: 'test_automation_click',
+                                                category: 'Conversion',
+                                                label: selectedProject?.title || 'Unknown'
+                                            })}
                                         >
                                             Test Automation
                                             <ExternalLink size={18} />
