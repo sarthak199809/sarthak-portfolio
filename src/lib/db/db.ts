@@ -16,3 +16,15 @@ if (!fs.existsSync(dbDir)) {
 
 const sqlite = new Database(dbPath);
 export const db = drizzle(sqlite, { schema });
+
+// Ensure settings table exists (self-healing for production volumes)
+try {
+    sqlite.exec(`
+        CREATE TABLE IF NOT EXISTS settings (
+            key TEXT PRIMARY KEY,
+            value TEXT NOT NULL
+        );
+    `);
+} catch (error) {
+    console.error("Failed to ensure settings table exists:", error);
+}
