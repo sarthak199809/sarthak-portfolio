@@ -1,10 +1,28 @@
-"use client";
-
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Mail, Phone, Download, MapPin } from "lucide-react";
 import * as gtag from "@/lib/gtag";
 
 export default function HomeSection() {
+    const [resumeLink, setResumeLink] = useState("https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Sarthak_garg_resume_updated-feb26.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NhcnRoYWtfZ2FyZ19yZXN1bWVfdXBkYXRlZC1mZWIyNi5wZGYiLCJpYXQiOjE3NzE3NTcyODYsImV4cCI6MTgwMzI5MzI4Nn0.lOFK6pRZfSsmMUzmm0W-JyYS_yIkGDjnwUnHrFIJETE");
+
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await fetch("/api/settings");
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.resume_link) {
+                        setResumeLink(data.resume_link);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch settings:", error);
+            }
+        };
+        fetchSettings();
+    }, []);
+
     return (
         <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-24 py-32 bg-background transition-colors duration-300">
             <motion.div
@@ -77,7 +95,7 @@ export default function HomeSection() {
                                     Call Now
                                 </a>
                                 <a
-                                    href="https://zmucqnfxnsdtevzmjtzb.supabase.co/storage/v1/object/sign/portfoliodata/Sarthak_garg_resume_updated-feb26.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8wY2YxNTBhNC1jZDNlLTQzZjItOGU2Zi0yNmY3ZmU5ZGU4ZjIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW9kYXRhL1NhcnRoYWtfZ2FyZ19yZXN1bWVfdXBkYXRlZC1mZWIyNi5wZGYiLCJpYXQiOjE3NzE3NTcyODYsImV4cCI6MTgwMzI5MzI4Nn0.lOFK6pRZfSsmMUzmm0W-JyYS_yIkGDjnwUnHrFIJETE"
+                                    href={resumeLink}
                                     target="_blank"
                                     className="bg-background text-foreground px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-card transition-all border border-border"
                                     onClick={() => gtag.event({ action: 'resume_download', category: 'LeadGen', label: 'Resume PDF' })}

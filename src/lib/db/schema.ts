@@ -10,3 +10,7 @@ export const aiProjects = sqliteTable('ai_projects', {
     toolsUsed: text('tools_used').notNull(), // Store as JSON string of tools array
     displayOrder: integer('display_order').notNull().default(0),
 });
+export const settings = sqliteTable('settings', {
+    key: text('key').primaryKey(),
+    value: text('value').notNull(),
+});

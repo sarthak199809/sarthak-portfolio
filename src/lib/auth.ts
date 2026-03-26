@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
+import { NextRequest } from 'next/server';
 
 const SECRET_KEY = Buffer.from(process.env.CMS_SECRET || 'fallback-secret-key-at-least-32-chars-long');
 
@@ -44,4 +45,9 @@ export async function getSession() {
     } catch (error) {
         return null;
     }
+}
+
+export async function verifyAuth(req: NextRequest) {
+    const session = await getSession();
+    return !!session;
 }

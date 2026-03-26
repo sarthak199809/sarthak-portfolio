@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Plus, ArrowLeft, LogOut, LayoutGrid, GripVertical } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ProjectForm from "./ProjectForm";
+import ResumeSettings from "./ResumeSettings";
 import { motion } from "framer-motion";
 
 export default function CMSDashboard() {
@@ -62,6 +63,8 @@ export default function CMSDashboard() {
                     </button>
                 </div>
             </div>
+
+            <ResumeSettings />
 
             <div className="flex overflow-x-auto gap-6 pb-8 scrollbar-hide -mx-4 px-4 overflow-y-visible">
                 {projects.map((project) => (
